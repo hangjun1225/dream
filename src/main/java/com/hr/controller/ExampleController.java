@@ -64,7 +64,7 @@ public class ExampleController {
 	public String test5() {
 		User user=new User();
 		user.setId("1");
-		user.setName("2");
+		user.setUsername("2");
 		userService.addUser(user);
 		
 		return "success" ;

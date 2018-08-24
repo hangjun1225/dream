@@ -18,5 +18,21 @@ public class UserServiceImpl implements UserService {
 		return i;
 	}
 
+	@Override
+	public User queryById(Integer id) {
+		return userMapper.selectById(id);
+	}
+
+	@Override
+	public User queryByUsername(String username) {
+		return userMapper.selectById(username);
+	}
+
+	@Override
+	public int modifyUser(User user) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	
 }

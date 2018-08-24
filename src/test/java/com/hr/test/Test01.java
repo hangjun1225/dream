@@ -20,7 +20,7 @@ public class Test01 {
     public void add() throws Exception {
     	User user=new User();
     	user.setId("1");
-    	user.setName("2");
+    	user.setUsername("2");
         userService.addUser(user);
 
         //        Assert.assertEquals(new Integer(16), student.getAge());

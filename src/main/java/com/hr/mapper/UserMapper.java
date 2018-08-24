@@ -9,4 +9,8 @@ import com.hr.domain.User;
 public interface UserMapper {
 
     public int insertUser(User user);
+
+	public User selectById(Integer id);
+
+	public User selectById(String username);
 }
