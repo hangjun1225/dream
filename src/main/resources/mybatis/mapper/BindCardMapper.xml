@@ -15,15 +15,15 @@
 		SET personId=#{personId},
 		 	bankCard=#{bankCard},
 			bankMobile=#{bankMobile},
+			status=#{status},
 			createTime=#{createTime},
 			updateTime=#{updateTime}
 		WHERE id=#{id}
 	</update>
 
     <insert id="insertBindCard" parameterType="BindCard">
-        INSERT INTO BindCard(personId,bankCard,bankMobile,createTime,updateTime) 
-       			VALUES (#{personId},#{bankCard},#{bankMobile},#{createTime},#{updateTime})
-        
+        INSERT INTO BindCard(personId,bankCard,bankMobile,status,createTime,updateTime) 
+       			VALUES (#{personId},#{bankCard},#{bankMobile},#{status},#{createTime},#{updateTime})
     </insert>
     
     

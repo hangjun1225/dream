@@ -16,6 +16,8 @@ public class BindCard {
 	
 	private String bankMobile;
 	
+	private String status;
+	
 	private Date createTime;
 	
 	private Date updateTime;
@@ -55,6 +57,12 @@ public class BindCard {
 	}
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	
