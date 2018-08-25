@@ -2,3 +2,17 @@ user
 person
 bankcard   bankcardBin
 
+
+
+要完成以下内容
+有思路的未完成任务：
+1.session验证
+2.oauth验证
+
+
+
+
+需要思考的未完成任务
+1.日志如何记录请求和相应报文
+2.如何处理异常返回给前端显示
+
