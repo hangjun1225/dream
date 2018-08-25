@@ -148,6 +148,9 @@ public class Message {
 		this.updateTime = updateTime;
 	}
 
+	public static void main(String[] args) {
+		
+	}
 	
 
 }
