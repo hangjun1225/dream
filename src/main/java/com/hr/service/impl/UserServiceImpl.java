@@ -25,13 +25,12 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User queryByUsername(String username) {
-		return userMapper.selectById(username);
+		return userMapper.selectByUsername(username);
 	}
 
 	@Override
 	public int modifyUser(User user) {
-		// TODO Auto-generated method stub
-		return 0;
+		return userMapper.updateUser(user);
 	}
 
 	
