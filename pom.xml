@@ -86,6 +86,20 @@
 			<!-- <version>1.7.25</version> -->
 		</dependency>
 
+		<!-- httpclient -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<exclusions>
+				<!-- 本来需要依赖该包的,但是有默认的转换包.需要排除该包 -->
+				<exclusion>
+					<artifactId>commons-logging</artifactId>
+					<groupId>commons-logging</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+
 		<!-- 热部署模块 -->
 		<!--重启应用，修改controller中代码 或 修改html页面 后再刷新页面，会发现显示结果跟着变化。 -->
 		<dependency>
