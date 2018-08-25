@@ -1,7 +1,8 @@
 user
 person
 bankcard   bankcardBin
-
+Message
+BlackList
 
 
 要完成以下内容
@@ -13,6 +14,7 @@ bankcard   bankcardBin
 
 
 需要思考的未完成任务
-1.日志如何记录请求和相应报文
+1.日志如何记录请求和相应报文。
+	思路一：发送到消息队列，然后入库.
 2.如何处理异常返回给前端显示
 
