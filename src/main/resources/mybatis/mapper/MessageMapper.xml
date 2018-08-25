@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hr.mapper.MessageMapper">
+	<select id="selectAll" resultType="java.util.List">
+		SELECT *
+		FROM Message
+		WHERE status != '1'
+	</select>
+	<select id="selectById" parameterType="java.lang.Integer"
+		resultType="java.lang.Integer">
+		SELECT *
+		FROM Message
+		WHERE id=#{id}
+	</select>
+
+	<update id="updateMessage" parameterType="Message">
+		UPDATE Message
+		SET
+		personId=#{personId},
+		title=#{title},
+		price=#{price},
+		rentType=#{rentType},
+		houseType=#{houseType},
+		houseCenter=#{houseCenter},
+		address=#{address},
+		message=#{message},
+		mobile=#{mobile},
+		status=#{status},
+		createTime=#{createTime},
+		updateTime=#{updateTime}
+		WHERE id=#{id}
+	</update>
+
+
+
+	<insert id="insertMessage" parameterType="Message">
+		INSERT INTO
+		Message(personId,title,price,rentType,houseType,houseCenter,address,message,mobile,status,createTime,updateTime)
+		VALUES
+		(#{personId},#{title},#{price},#{rentType},#{houseType},#{houseCenter},#{address},#{message},#{mobile},#{status},#{createTime},#{updateTime})
+	</insert>
+
+</mapper>
