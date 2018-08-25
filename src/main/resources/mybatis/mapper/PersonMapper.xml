@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hr.mapper.PersonMapper">
+
+	<select id="selectById" parameterType="java.lang.Integer" resultType="Person">
+		SELECT * 
+		FROM person
+		WHERE id=#{id}
+	</select>
+
+	<update id="updatePerson" parameterType="Person">
+		UPDATE Person
+		SET realName=#{realName},
+		 	idNumber=#{idNumber},
+			mobile=#{mobile},
+			createTime=#{createTime},
+			updateTime=#{updateTime}
+		WHERE id=#{id}
+	</update>
+
+    <insert id="insertPerson" parameterType="Person">
+        INSERT INTO Person(realName,idNumber,mobile,createTime,updateTime) 
+       			VALUES (#{realName},#{idNumber},#{mobile},#{createTime},#{updateTime})
+        
+    </insert>
+    
+    
+</mapper>

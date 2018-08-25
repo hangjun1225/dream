@@ -12,7 +12,7 @@ import com.hr.service.UserService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class Test01 {
+public class TestUserService {
     @Autowired
     private UserService userService;
 

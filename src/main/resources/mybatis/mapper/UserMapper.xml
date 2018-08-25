@@ -4,13 +4,13 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hr.mapper.UserMapper">
 
-	<select id="selectById" parameterType="java.lang.Integer" resultType="user">
+	<select id="selectById" parameterType="java.lang.Integer" resultType="User">
 		SELECT * 
 		FROM user
 		WHERE id=#{id}
 	</select>
 
-	<select id="selectByUsername" parameterType="java.lang.String" resultType="user">
+	<select id="selectByUsername" parameterType="java.lang.String" resultType="User">
 		SELECT * 
 		FROM user
 		WHERE username=#{username}
@@ -27,7 +27,7 @@
 		WHERE id=#{id}
 	</update>
 
-    <insert id="insertUser" parameterType="com.hr.domain.User">
+    <insert id="insertUser" parameterType="User">
         INSERT INTO user(id,username,password,email,personId,createTime,updateTime) VALUES (#{id},#{username},#{password},#{email},#{personId},#{createTime},#{updateTime})
     </insert>
     
