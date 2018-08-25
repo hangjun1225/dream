@@ -3,17 +3,17 @@ package com.hr.domain;
 import java.util.Date;
 
 public class User {
-	private String id;
+	private Integer id;
 	private String username;
 	private String password;
 	private String email;
+	private Integer personId;
 	private Date createTime;
 	private Date updateTime;
-
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getUsername() {
@@ -34,6 +34,12 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public Integer getPersonId() {
+		return personId;
+	}
+	public void setPersonId(Integer personId) {
+		this.personId = personId;
+	}
 	public Date getCreateTime() {
 		return createTime;
 	}
@@ -46,6 +52,7 @@ public class User {
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
 	}
-	
+
+
 	
 }

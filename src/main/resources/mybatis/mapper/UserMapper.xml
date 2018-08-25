@@ -21,13 +21,14 @@
 		SET username=#{username},
 		 	password=#{password},
 			email=#{email},
+			personId=#{personId},
 			createTime=#{createTime},
 			updateTime=#{updateTime}
 		WHERE id=#{id}
 	</update>
 
     <insert id="insertUser" parameterType="com.hr.domain.User">
-        INSERT INTO user(id,username,password,email,createTime,updateTime) VALUES (#{id},#{username},#{password},#{email},#{createTime},#{updateTime})
+        INSERT INTO user(id,username,password,email,personId,createTime,updateTime) VALUES (#{id},#{username},#{password},#{email},#{personId},#{createTime},#{updateTime})
     </insert>
     
 </mapper>

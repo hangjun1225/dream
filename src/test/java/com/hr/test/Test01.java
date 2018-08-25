@@ -19,7 +19,7 @@ public class Test01 {
     @Test
     public void add() throws Exception {
     	User user=new User();
-    	user.setId("1");
+    	user.setId(1);
     	user.setUsername("2");
         userService.addUser(user);
 
@@ -48,7 +48,7 @@ public class Test01 {
     @Test
     public void updateUser() throws Exception {
     	User user=new User();
-    	user.setId("1");
+    	user.setId(1);
     	user.setUsername("2");
     	user.setEmail("2292491241@qq.com");
         userService.modifyUser(user);

@@ -63,7 +63,7 @@ public class ExampleController {
 	@RequestMapping("/test5")
 	public String test5() {
 		User user=new User();
-		user.setId("1");
+		user.setId(1);
 		user.setUsername("2");
 		userService.addUser(user);
 		
