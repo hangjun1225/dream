@@ -17,4 +17,17 @@ BlackList
 1.日志如何记录请求和相应报文。
 	思路一：发送到消息队列，然后入库.
 2.如何处理异常返回给前端显示
+3.请求报文与响应报文进行加密传输
 
+
+
+
+
+
+
+
+
+
+文件上传与下载参考
+https://blog.csdn.net/change_on/article/details/59529034/
+https://www.cnblogs.com/studyDetail/p/7003253.html
