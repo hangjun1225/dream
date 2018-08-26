@@ -42,7 +42,7 @@ public class TestMessageService {
     public void updateMessage() throws Exception {
     	Message message=new Message();
     	message.setId(1);
-    	message.setHouseArea("aasdfas");
+    	message.setHouseDecoration("精装修");
         messageService.modifyMessage(message);
 
     }
