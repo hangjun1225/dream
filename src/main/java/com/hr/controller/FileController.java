@@ -3,6 +3,7 @@ package com.hr.controller;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
@@ -63,7 +64,10 @@ public class FileController {
 //			}
 //		}
 		try {
-			file.transferTo(dest); // 保存文件
+//			方式一
+//			file.transferTo(dest); // 保存文件
+//			方式二
+			upload(file.getBytes(),path,fileName);
 			return "true";
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
@@ -71,9 +75,26 @@ public class FileController {
 		} catch (IOException e) {
 			e.printStackTrace();
 			return "false";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "false";
 		}
 	}
 
+	
+	private void upload(byte[] file, String filePath, String fileName) throws Exception { 
+        File targetFile = new File(filePath);  
+        if(!targetFile.exists()){    
+            targetFile.mkdirs();
+        }
+        FileOutputStream out = new FileOutputStream(filePath+File.separator+fileName);
+        out.write(file);
+        out.flush();
+        out.close();
+    }
+	
+	
+	
 	/*
 	 * 获取multifile.html页面
 	*/
