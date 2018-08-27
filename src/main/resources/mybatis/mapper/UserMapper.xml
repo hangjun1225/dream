@@ -16,6 +16,13 @@
 		WHERE username=#{username}
 	</select>
 	
+	<select id="selectByUsernameAndPassword" parameterType="java.lang.String" resultType="User">
+		SELECT * 
+		FROM user
+		WHERE username=#{username} and password=#{password}
+	</select>
+	
+	
 	<update id="updateUser" parameterType="User">
 		UPDATE User
 		SET username=#{username},

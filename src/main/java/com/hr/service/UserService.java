@@ -8,9 +8,13 @@ public interface UserService {
 	
 	User queryByUsername(String username);
 	
+	User queryByUsernameAndPassowrd(String username, String password);
+	
 	int addUser(User user);
 	
 	int modifyUser(User user);
+
+	
 	
 	
 	

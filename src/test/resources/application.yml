@@ -11,6 +11,10 @@ server:
     
 #spring 设置
 spring:
+# 激活dev配置文件
+  profiles:
+    active:
+    - dev
 # http编码设置
   http:
     encoding:
@@ -51,6 +55,9 @@ spring:
     host: 127.0.0.1
     port: 6379
     password: 123456
+    
+  thymeleaf:
+    cache: false 
     
     
 #mybatis设置

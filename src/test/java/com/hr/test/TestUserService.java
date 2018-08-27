@@ -16,6 +16,13 @@ public class TestUserService {
     @Autowired
     private UserService userService;
 
+    
+    @Test
+    public void register() throws Exception {
+        User user = userService.queryByUsernameAndPassowrd("1", "2");
+        System.out.println(user==null);
+    }
+    
     @Test
     public void add() throws Exception {
     	User user=new User();
