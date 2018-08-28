@@ -1,11 +1,11 @@
-#自定义参数file.xx(linux文件目录下需修改配置)
-file:
-  #文件上传的目录
-  uploadPath: E:\\home\hangjun\file\upload
-  #文件上传 # Single file max size：默认值50MB
-  uploadMaxFileSize: 50MB
-  #文件上传 # All files max size:默认值100MB
-  uploadMaxRequestSize: 100MB
-  #文件下载的目录(以后用到)
-  downloadPath: E:\\home\hangjun\file\download
-  
+##自定义参数file.xx(linux文件目录下需修改配置)
+#file:
+#  #文件上传的目录
+#  uploadPath: E:\\home\hangjun\file\upload
+#  #文件上传 # Single file max size：默认值50MB
+#  uploadMaxFileSize: 50MB
+#  #文件上传 # All files max size:默认值100MB
+#  uploadMaxRequestSize: 100MB
+#  #文件下载的目录(以后用到)
+#  downloadPath: E:\\home\hangjun\file\download
+#  

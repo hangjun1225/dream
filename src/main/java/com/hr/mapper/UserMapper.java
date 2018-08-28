@@ -1,6 +1,8 @@
 package com.hr.mapper;
 
 
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.hr.domain.User;
@@ -16,6 +18,5 @@ public interface UserMapper {
 	
 	public int insertUser(User user);
 
-	public User selectByUsernameAndPassword(String username, String password);
 	
 }

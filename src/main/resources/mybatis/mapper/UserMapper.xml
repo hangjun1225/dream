@@ -16,7 +16,7 @@
 		WHERE username=#{username}
 	</select>
 	
-	<select id="selectByUsernameAndPassword" parameterType="java.lang.String" resultType="User">
+	<select id="selectByUsernameAndPassword" parameterType="java.util.Map" resultType="User">
 		SELECT * 
 		FROM user
 		WHERE username=#{username} and password=#{password}

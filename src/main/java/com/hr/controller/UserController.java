@@ -56,23 +56,25 @@ public class UserController {
 	}
 
 	@RequestMapping("/login")
-	public String login(User user) {
+	public String login(User user) throws UnsupportedEncodingException {
 		// check data
 		String username = user.getUsername();
 		if (StringUtils.isEmpty(username)) {
 			throw new DbankException(DbankErrorCode.UC000001);
 		}
-
+		// 1.判断用户名是否存在
+		User userDb = userService.queryByUsername(user.getUsername());
+		if (null == userDb) {
+			throw new DbankException("","用户不存在");
+		}
+		String passwordDb=userDb.getPassword();
+		//2.请求密码3des加密,同时判断密码是否正确
 		String password = user.getPassword();
 		byte[] encrypt = DES3Util.encrypt(password, "123456781234567812345678");
-		try {
-			password = new String(encrypt, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+		password = new String(encrypt, "UTF-8");
+		if(!passwordDb.equals(password)) {
+			throw new DbankException("","密码不正确");
 		}
-
-		userService.queryByUsernameAndPassowrd(username, password);
-
 		return "success";
 	}
 
