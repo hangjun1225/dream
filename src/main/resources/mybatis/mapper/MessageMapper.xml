@@ -3,6 +3,18 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hr.mapper.MessageMapper">
+
+	<!-- 查询总数 -->
+	<select id="count" resultType="java.lang.Integer">
+		select count(*) from message
+	</select>
+	<!-- 分页查询 -->
+	<select id="selectMessageByPage" parameterType="java.util.Map" resultType="java.util.List">
+		select * from message order by createTime desc
+		limit by #{currentRow},#{pageSize}
+	</select>
+
+
 	<select id="selectAll" resultType="java.util.List">
 		SELECT *
 		FROM Message

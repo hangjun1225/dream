@@ -45,6 +45,16 @@ public class Result<T> {
 		this.retCode = dbankErrorCode.getCode();
 		this.retMsg = dbankErrorCode.getMsg();
 	}
+	/**
+	 * 返回错误信息使用该方法
+	 * @param dbankErrorCode
+	 */
+	public Result(DbankErrorCode dbankErrorCode,T data) {
+		this.retCode = dbankErrorCode.getCode();
+		this.retMsg = dbankErrorCode.getMsg();
+		this.data=data;
+	}
+	
 	public String getRetCode() {
 		return retCode;
 	}

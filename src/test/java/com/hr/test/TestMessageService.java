@@ -17,6 +17,20 @@ public class TestMessageService {
     @Autowired
     private MessageService messageService;
     @Test
+    public void count() throws Exception {
+        int count = messageService.count();
+        System.out.println(count);
+    }
+    
+    @Test
+    public void queryMessagesByPage() throws Exception {
+    	
+        List<Message> list = messageService.queryMessagesByPage(1, 2);
+        System.out.println(list);
+    }
+    
+    
+    @Test
     public void queryAll() throws Exception {
         List<Message> list = messageService.queryAll();
         System.out.println(list);

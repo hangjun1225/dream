@@ -2,6 +2,7 @@ package com.hr.mapper;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -17,5 +18,18 @@ public interface MessageMapper {
 	public int insertMessage(Message message);
 	
 	public List<Message> selectAll();
+
+	/**
+	 * 查询总数
+	 * @return
+	 */
+	public int count();
+	/**
+	 * 查询当前页的记录
+	 * @param currentRow
+	 * @param pageSize
+	 * @return
+	 */
+	public List<Message> selectMessageByPage(Map map);
 	
 }
