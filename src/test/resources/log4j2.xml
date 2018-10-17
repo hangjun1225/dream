@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
+<configuration status="warn" monitorInterval="30">
+    <properties>
+        <property name="logPath">logs/hpaasvc</property>
+        <property name="PATTERN1">[%d{yyyy-MM-dd HH:mm:ss:SSS}] [PID=${sys:PID} %20.20t %5p] %c: %m%n%xwEx</property>
+        <property name="PATTERN2">[%d{yyyy-MM-dd HH:mm:ss:SSS}] [PID=${sys:PID} %20.20t %5p] %c: %m%n%xwEx</property>
+        <!-- 
+        <property name="PATTERN1">[%d{yyyy-MM-dd HH:mm:ss:SSS}] [PID=${sys:PID} %20.20t %5p] %-40.40c{1.}: %m%n%xwEx</property>
+        <property name="PATTERN2">[%d{yyyy-MM-dd HH:mm:ss:SSS}] [PID=${sys:PID} %20.20t %5p] %-40.40c{1.}:%L %m%n%xwEx</property>
+         -->
+	</properties>
+    <!--先定义所有的appender-->
+    <appenders>
+        <!--这个输出控制台的配置-->
+        <console name="Console" target="SYSTEM_OUT">
+            <!--输出日志的格式-->
+            <PatternLayout pattern="${PATTERN1}"/>
+        </console>
+        <!--处理DEBUG级别的日志，并把该日志放到logs/hpaasvc文件中-->
+        <!--打印出DEBUG级别日志，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档-->
+        <RollingRandomAccessFile name="RollingFileConsole" fileName="${logPath}/console.log"
+                     filePattern="${logPath}/$${date:yyyy-MM}/console_%d{yyyy-MM-dd}_%i.log.gz">
+            <Filters>
+                <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="${PATTERN1}"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+                <TimeBasedTriggeringPolicy/>
+            </Policies>
+            <!-- 备份文件一天最多多少个,默认值是7.这里设置20个 -->
+			<DefaultRolloverStrategy max="20">
+				<Delete basePath="${LOG_HOME}" maxDepth="1">
+					<IfFileName glob="console_*.log" />
+					<IfLastModified age="30d" />
+				</Delete>
+			</DefaultRolloverStrategy>
+        </RollingRandomAccessFile>
+        
+        <!-- 这个会打印出所有的info及以下级别的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档-->
+        <RollingRandomAccessFile name="RollingFileInfo" fileName="./logs/hpaasvc/info.log"
+                     filePattern="${logPath}/$${date:yyyy-MM}/info_%d{yyyy-MM-dd}_%i.log.gz">
+            <Filters>
+                <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
+                <ThresholdFilter level="WARN" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="${PATTERN1}"/>
+            <Policies>
+            	<SizeBasedTriggeringPolicy size="100 MB"/>
+                <TimeBasedTriggeringPolicy/>
+            </Policies>
+            <!-- 备份文件一天最多多少个,默认值是7.这里设置20个 -->
+			<DefaultRolloverStrategy max="20">
+				<Delete basePath="${LOG_HOME}" maxDepth="1">
+					<IfFileName glob="info_*.log" />
+					<IfLastModified age="30d" />
+				</Delete>
+			</DefaultRolloverStrategy>
+        </RollingRandomAccessFile>
+ 
+        <RollingRandomAccessFile name="RollingFileWarn" fileName="${logPath}/warn.log"
+                     filePattern="${logPath}/$${date:yyyy-MM}/warn_%d{yyyy-MM-dd}_%i.log.gz">
+            <Filters>
+            	<ThresholdFilter level="ERROR" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="WARN" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="${PATTERN1}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件，这里设置了20 -->
+            <!-- 备份文件一天最多多少个,默认值是7.这里设置20个 -->
+			<DefaultRolloverStrategy max="20">
+				<Delete basePath="${LOG_HOME}" maxDepth="1">
+					<IfFileName glob="warn_*.log" />
+					<IfLastModified age="30d" />
+				</Delete>
+			</DefaultRolloverStrategy>
+        </RollingRandomAccessFile>
+ 		<!-- 只在错误日志设置打印行号 (打印行号会影响性能) -->
+        <RollingRandomAccessFile name="RollingFileError" fileName="${logPath}/error.log"
+                     filePattern="${logPath}/$${date:yyyy-MM}/error_%d{yyyy-MM-dd}_%i.log.gz">
+            <ThresholdFilter level="ERROR"/>
+            <PatternLayout pattern="${PATTERN2}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <!-- 备份文件一天最多多少个,默认值是7.这里设置20个 -->
+			<DefaultRolloverStrategy max="20">
+				<Delete basePath="${LOG_HOME}" maxDepth="1">
+					<IfFileName glob="error_*.log" />
+					<IfLastModified age="30d" />
+				</Delete>
+			</DefaultRolloverStrategy>
+        </RollingRandomAccessFile>
+ 
+ 		<!--druid的日志记录追加器-->
+        <RollingRandomAccessFile name="druidSqlRollingFile" fileName="${logPath}/druid_sql.log"
+                     filePattern="${logPath}/$${date:yyyy-MM}/druid_sql_%d{yyyy-MM-dd}_%i.log.gz">
+            <PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss}] %-5level %L %M - %msg%xEx%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+                <TimeBasedTriggeringPolicy/>
+            </Policies>
+            <!-- 备份文件一天最多多少个,默认值是7.这里设置20个 -->
+			<DefaultRolloverStrategy max="20">
+				<Delete basePath="${LOG_HOME}" maxDepth="1">
+					<IfFileName glob="error_*.log" />
+					<IfLastModified age="30d" />
+				</Delete>
+			</DefaultRolloverStrategy>
+        </RollingRandomAccessFile>
+    </appenders>
+    <!--然后定义logger，只有定义了logger并引入的appender，appender才会生效-->
+    <loggers>
+        <!--记录druid-sql的记录-->
+        <logger name="druid.sql.Statement" level="debug" additivity="false">
+            <appender-ref ref="druidSqlRollingFile"/>
+        </logger>
+        
+        <root level="debug">
+            <appender-ref ref="Console"/>
+            <!-- 
+            <appender-ref ref="RollingFileConsole"/>
+            <appender-ref ref="RollingFileInfo"/>
+            <appender-ref ref="RollingFileWarn"/>
+            <appender-ref ref="RollingFileError"/> 
+            -->
+        </root>
+        
+        <!--过滤掉spring和hibernate的一些无用的debug信息-->
+        <logger name="org.springframework" level="INFO" />
+        <logger name="org.mybatis" level="INFO"/>
+        <logger name="org.hibernate" level="INFO" />
+        <!-- redis -->
+        <logger name="io.lettuce" level="INFO" />
+        <logger name="io.netty" level="INFO" />
+        <logger name="org.apache.ibatis" level="INFO" />
+        
+        <!-- <logger name="org.apache" level="warn" /> -->
+        <!-- 
+        <logger name="com.alibaba.druid" level="INFO" /> -->
+    </loggers>
+ 
+</configuration>

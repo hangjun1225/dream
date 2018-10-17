@@ -75,4 +75,6 @@ logging:
     com.hr.mapper: debug  
     com.hr.service: debug
     com.hr.controller: debug
+    io.netty.util: info
+    org.springframework: info
     

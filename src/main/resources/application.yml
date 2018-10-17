@@ -3,7 +3,7 @@ debug: false
 
 #tomcat 服务器设置
 server:
-  port: 8090
+  port: 8080
   servlet:
     context-path: /
   tomcat:
@@ -76,4 +76,3 @@ logging:
     com.hr.mapper: debug  
     com.hr.service: debug
     com.hr.controller: debug
-    
