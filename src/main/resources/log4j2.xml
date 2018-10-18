@@ -140,7 +140,7 @@
         <logger name="io.lettuce" level="INFO" />
         <logger name="io.netty" level="INFO" />
         <logger name="org.apache.ibatis" level="INFO" />
-        
+        <logger name="org.thymeleaf" level="INFO" />
         <!-- <logger name="org.apache" level="warn" /> -->
         <!-- 
         <logger name="com.alibaba.druid" level="INFO" /> -->
