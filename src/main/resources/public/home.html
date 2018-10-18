@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+<!-- css -->
+<!-- css_bootstrap -->
+<link rel="stylesheet" th:href="@{/frontFrame/bootstrap/css/bootstrap.min.css}">
+
+<!-- js -->	
+<!-- js_bootstrap -->
+<script  th:src="@{/frontFrame/jquery/js/jquery.min.js}"></script>
+<!-- js_jquery -->
+<script th:src="@{/frontFrame/bootstrap/js/bootstrap.min.js}"></script>
+	
+<style type="text/css">
+		body { 
+			padding-top: 60px; 
+		}
+</style>
+<script type="text/javascript">
+		function login(){
+			var loginname = $("#username").val();
+			var loginpswd = $("#password").val();
+			
+			$.ajax({
+				"url":"[[@{/user/login}]]",
+				"type":"post",
+				"data":{
+					"username":loginname,
+					"password":loginpswd
+					
+				},
+				"beforeSend":function(){
+					alert("abcd");
+					/* 
+					$.messager.progress();	
+					*/
+					return true;
+				},
+				"success":	function(result){
+					
+					if(result.retCode == '000000'){
+						alert("登录成功");
+					}else{
+						$("#errorMsg").html(result.retMsg);
+						$("#errorMsg").show();
+					}
+					
+					/* 
+					//关闭进度条
+					$.messager.progress("close");
+					 */
+					/*  
+			    	//验证结果
+			    	var jsonData=eval("("+result+")");
+					alert(jsonData); */				
+					/* 
+					if(r.success){
+						$.messager.alert("PMES系统提示", "派障成功", "info",function(){
+							$("#bugticketTable").datagrid("reload");
+						});
+					}else{
+						$.messager.alert("PMES系统提示", "排障失败", "error");
+					 
+					}
+					*/
+				}
+				
+			});
+		}
+</script>
+
+</head>
+<body>
+	<h1 th:inlines="text">主页</h1>
+
+	<h1 th:inlines="text">用户登录</h1>
+	<form th:action="@{/user/login}" method="post">
+		<p>
+			用户名: <input type="text" id="username" name="username" />
+		</p>
+		<p>
+			密码: <input type="text" id="password" name="password" />
+		</p>
+		<p>
+			<input type="button" onclick="login();" value="提交" />
+		</p>
+		
+		<div id="errorMsg" class="alert alert-danger text-center" style="display:none;"></div>
+	</form>
+
+
+
+
+
+
+	<div>
+		<p class="pt-lg text-center">需要注册？</p>
+		<a href="/register" class="btn btn-block btn-default">现在就注册</a>
+	</div>
+	
+	
+	
+	
+	
+	<nav id="header-nav" class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="container-fluid">
+        	<!-- navbar-header -->
+            <div class="navbar-header">
+            	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#abcd">
+                    <span class="sr-only">切换导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>`
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="#" class="navbar-brand"><img src=""  th:src="@{/image/logo.png}" alt="乐享网"></a>
+                
+            </div>
+            <!-- navbar-header -->
+            <div class="collapse navbar-collapse" id="abcd">
+            	<ul class="nav navbar-nav navbar-left header-inner-nav">
+                    <li class="active"><a href="#"><i class="glyphicon glyphicon-home"></i> 首页</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-pencil"></i> 发布</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-list"></i> 分类</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-question-sign"></i> 关于</a></li>
+                    <li><a href="about.html">登录 <i class="glyphicon glyphicon-play icon-sj"></i></a></li>
+                </ul>
+                
+                <!--  -->
+                <ul class="nav navbar-nav navbar-right">  
+		            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>  登陆</a></li>
+		            <li><a href="#"><span class="glyphicon glyphicon-user"></span>  注册</a></li>  
+		        </ul>
+               
+               	<!-- navbar-form -->
+			   	<form class="navbar-form navbar-right" role="search">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Search">
+					</div>
+					<button type="submit" class="btn btn-default">Submit</button>
+			   	</form>
+			   	
+                
+            </div>
+            
+        </div>
+    </nav>
+	
+
+	
+
+</body>
+</html>
