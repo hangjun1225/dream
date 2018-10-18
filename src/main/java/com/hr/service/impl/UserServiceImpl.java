@@ -1,7 +1,7 @@
 package com.hr.service.impl;
 
-import java.util.HashMap;
-import java.util.Map;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,14 +26,16 @@ public class UserServiceImpl implements UserService {
 		return userMapper.selectById(id);
 	}
 
-	@Override
-	public User queryByUsername(String username) {
-		return userMapper.selectByUsername(username);
-	}
 
 	@Override
 	public int modifyUser(User user) {
 		return userMapper.updateUser(user);
+	}
+
+	@Override
+	public List<User> queryByUsernameAndPassword(User user) {
+		
+		return userMapper.selectByUsernameAndPassword(user);
 	}
 
 	

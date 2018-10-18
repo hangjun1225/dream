@@ -119,7 +119,7 @@
     <loggers>
         <!--记录druid-sql的记录-->
         <logger name="druid.sql.Statement" level="debug" additivity="false">
-            <appender-ref ref="druidSqlRollingFile"/>
+            <!-- <appender-ref ref="druidSqlRollingFile"/> -->
         </logger>
         
         <root level="debug">

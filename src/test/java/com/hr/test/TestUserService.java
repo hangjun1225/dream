@@ -1,6 +1,7 @@
 //package com.hr.test;
 //
-//import org.junit.Assert;
+//import java.util.List;
+//
 //import org.junit.Test;
 //import org.junit.runner.RunWith;
 //import org.springframework.beans.factory.annotation.Autowired;
@@ -39,9 +40,12 @@
 //    
 //    @Test
 //    public void selectByUsername() throws Exception {
-//    	String username="2";
-//        User user = userService.queryByUsername(username);
-//        System.out.println(user);
+//    	User u=new User();
+//    	u.setUsername("1");
+//    	u.setPassword("2");
+//    	u.setEmail("3");
+//        List<User> userList = userService.queryByUsernameAndPassword(u);
+//        System.out.println(userList);
 //
 //        //        Assert.assertEquals(new Integer(16), student.getAge());
 //    }

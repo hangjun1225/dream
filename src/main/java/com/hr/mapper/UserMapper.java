@@ -1,7 +1,8 @@
 package com.hr.mapper;
 
 
-import java.util.Map;
+
+import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -12,11 +13,10 @@ public interface UserMapper {
 
 	public User selectById(Integer id);
 
-	public User selectByUsername(String username);
-
 	public int updateUser(User user);
 	
 	public int insertUser(User user);
 
+	public List<User> selectByUsernameAndPassword(User user);
 	
 }

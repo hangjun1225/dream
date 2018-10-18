@@ -7,21 +7,73 @@
 <!-- css -->
 <!-- css_bootstrap -->
 <link rel="stylesheet"																
-	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" th:href="@{/frontFrame/bootstrap/css/bootstrap.min.css}">
-	
-	
+	 th:href="@{/frontFrame/bootstrap/css/bootstrap.min.css}">
+
 <!-- js -->	
 <!-- js_bootstrap -->
-<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js" th:src="@{/frontFrame/jquery/js/jquery.min.js}"></script>
+<script th:src="@{/frontFrame/jquery/js/jquery.min.js}"></script>
 <!-- js_jquery -->
 <script
-	src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" th:src="@{/frontFrame/bootstrap/js/bootstrap.min.js}"></script>
+	 th:src="@{/frontFrame/bootstrap/js/bootstrap.min.js}"></script>
 	
 <style type="text/css">
 		body { 
 			padding-top: 60px; 
 		}
 </style>
+
+<script type="text/javascript">
+		function login(){
+			var loginname = $("#username").val();
+			var loginpswd = $("#password").val();
+			
+			$.ajax({
+				"url":"[[@{/user/login}]]",
+				"type":"post",
+				"data":{
+					"username":loginname,
+					"password":loginpswd
+					
+				},
+				"beforeSend":function(){
+					/* alert("abcd"); */
+					return true;
+				},
+				"success":	function(result){
+					
+					if(result.retCode == '000000'){
+						alert("登录成功");
+						window.location.href = "[[@{/home.html}]]";
+					}else{
+						$("#errorMsg").html(result.retMsg);
+						$("#errorMsg").show();
+					}
+					
+					/* 
+					//关闭进度条
+					$.messager.progress("close");
+					 */
+					/*  
+			    	//验证结果
+			    	var jsonData=eval("("+result+")");
+					alert(jsonData); */				
+					/* 
+					if(r.success){
+						$.messager.alert("PMES系统提示", "派障成功", "info",function(){
+							$("#bugticketTable").datagrid("reload");
+						});
+					}else{
+						$.messager.alert("PMES系统提示", "排障失败", "error");
+					 
+					}
+					*/
+				}
+				
+			});
+		}
+</script>
+
+
 </head>
 <body>
 	<nav id="header-nav" class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
@@ -90,7 +142,7 @@
 							<label class="form-label" for="user[login]">Username</label>
 						</dt>
 						<dd>
-							<input type="text" name="user[login]" id="user[login]"
+							<input type="text" name="username" id="username"
 								class="form-control form-control-lg input-block"
 								placeholder="Pick a username" autofocus>
 						</dd>
@@ -98,10 +150,10 @@
 		
 					<dl class="form-group">
 						<dt class="input-label">
-							<label class="form-label" for="user[email]">Email</label>
+							<label class="form-label" for="email">Email</label>
 						</dt>
 						<dd>
-							<input type="text" name="user[email]" id="user[email]"
+							<input type="text" name="email" id="email"
 								class="form-control form-control-lg input-block js-email-notice-trigger"
 								placeholder="you@example.com">
 						</dd>
@@ -109,10 +161,10 @@
 					
 					<dl class="form-group">
 						<dt class="input-label">
-							<label class="form-label" for="user[password]">Password</label>
+							<label class="form-label" for="password">Password</label>
 						</dt>
 						<dd>
-							<input type="password" name="user[password]" id="user[password]"
+							<input type="password" name="password" id="password"
 								class="form-control form-control-lg input-block"
 								placeholder="Create a password">
 						</dd>
@@ -121,9 +173,10 @@
 						</small>
 					</dl>
 				
-					<button class="btn btn-success btn-lg btn-block"
-						type="submit" data-ga-click="Signup, Attempt, location:teams;">Sign
-						up for GitHub</button>
+					<button id="loginBotton" class="btn btn-success btn-lg btn-block" type="submit" onclick="login();">Sign up for GitHub</button>
+					
+					<p id="errorMsg" hidden>errorMsg</p>
+					
 					<small>
 						By clicking &ldquo;Sign up for GitHub&rdquo;, you agree to our 
 						<a class="" href="https://help.github.com/service" target="_blank">terms of service</a>
