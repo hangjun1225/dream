@@ -1,0 +1,40 @@
+[2018-10-18 16:12:04] DEBUG 137 statementLog - {conn-10005, pstmt-20000} created. SELECT * 
+		FROM user
+	 	 WHERE username = ?
+             
+             
+                 And password = ?
+[2018-10-18 16:12:04] DEBUG 137 statementLog - {conn-10005, pstmt-20000} Parameters : [1, 2]
+[2018-10-18 16:12:04] DEBUG 137 statementLog - {conn-10005, pstmt-20000} Types : [VARCHAR, VARCHAR]
+[2018-10-18 16:12:05] DEBUG 137 statementLog - {conn-10005, pstmt-20000} executed. 362.2411 millis. SELECT * 
+		FROM user
+	 	 WHERE username = ?
+             
+             
+                 And password = ?
+[2018-10-18 16:12:05] DEBUG 137 statementLog - {conn-10005, pstmt-20000} clearParameters. 
+[2018-10-18 16:37:31] DEBUG 137 statementLog - {conn-10005, pstmt-20000} Parameters : [1, 2]
+[2018-10-18 16:37:31] DEBUG 137 statementLog - {conn-10005, pstmt-20000} Types : [VARCHAR, VARCHAR]
+[2018-10-18 16:37:31] DEBUG 137 statementLog - {conn-10005, pstmt-20000} executed. 2.9397 millis. SELECT * 
+		FROM user
+	 	 WHERE username = ?
+             
+             
+                 And password = ?
+[2018-10-18 16:37:31] DEBUG 137 statementLog - {conn-10005, pstmt-20000} clearParameters. 
+[2018-10-18 16:40:08] DEBUG 137 statementLog - {conn-10005, pstmt-20000} closed
+[2018-10-18 16:41:26] DEBUG 137 statementLog - {conn-110005, pstmt-120000} created. SELECT * 
+		FROM user
+	 	 WHERE username = ?
+             
+             
+                 And password = ?
+[2018-10-18 16:41:26] DEBUG 137 statementLog - {conn-110005, pstmt-120000} Parameters : [1, 2]
+[2018-10-18 16:41:26] DEBUG 137 statementLog - {conn-110005, pstmt-120000} Types : [VARCHAR, VARCHAR]
+[2018-10-18 16:41:26] DEBUG 137 statementLog - {conn-110005, pstmt-120000} executed. 10.2127 millis. SELECT * 
+		FROM user
+	 	 WHERE username = ?
+             
+             
+                 And password = ?
+[2018-10-18 16:41:26] DEBUG 137 statementLog - {conn-110005, pstmt-120000} clearParameters. 
